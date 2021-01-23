@@ -11,6 +11,7 @@
      @auth
         @include('layout.nav')
      @endauth
+     @include('layout.sessoin')
      <div class="container">
          @yield('content')
      </div>
