@@ -4,10 +4,13 @@
             echo Str::ucfirst($cn ?? $name)
         @endphp
     </label>
-    <input type="{{$type}}" class="form-control rounded-0 @if($errors->has($name)) is-invalid @endif"
-    id="{{$name}}" name="{{$name}}" value="{{$value ?? old($name)}}"
-     {{$r ?? ""}} {{$m ?? '' }}
+    <textarea type="text" class="form-control rounded-0 @if($errors->has($name))
+        is-invalid @endif"
+    id="{{$name}}" name="{{$name}}"
+     {{$r ?? ""}}
      >
+     {{$value ?? old($name)}}
+    </textarea>
     @error($name)
     <div id="{{$name}}Help" class="form-text text-danger">{{$errors->first($name)}}</div>
     @enderror

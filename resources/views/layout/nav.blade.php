@@ -18,9 +18,9 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="{{route('cats.index')}}">Category</a></li>
-            <li><a class="dropdown-item" href="#">Products</a></li>
+            <li><a class="dropdown-item" href="{{route('tags.index')}}">Tags</a></li>
              <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Users</a></li>
+            <li><a class="dropdown-item" href="{{route('products.index')}}">Products</a></li>
           </ul>
         </li>
         <li class="nav-item">

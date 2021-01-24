@@ -5,6 +5,7 @@
 @section('content')
 <h1 class="text-center text-info my-5">All Sub Categories</h1>
 <div class="col-md-8 offset-md-2">
+    <a href="{{url()->previous()}}" class="btn btn-success btn-sm"><i class="material-icons">keyboard_arrow_left</i></a>
     <a href="{{route('cat.sub.create',$cat->id)}}" class="btn btn-primary btn-sm">Create <i class="material-icons">add</i></a>
     <table class="table table-bordered">
         <thead>
