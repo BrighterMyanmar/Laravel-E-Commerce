@@ -20,6 +20,9 @@ Route::group(['middleware' => 'Aware', 'prefix' => 'admin'], function () {
     Route::resource('products', ProductController::class);
     Route::resource('cat.sub', SubCatController::class)->shallow();
     Route::get('/orders',[OrderController::class,'allOrder'])->name('all-orders');
+
+    Route::patch('/order/{id}',[OrderController::class,'updateStatus'])->name('order-status-change');
+
     Route::get('/orderItem/{id}',[OrderItemController::class,'orderItemById'])->name('orderitem-byid');
 
     Route::get('/test',[UserController::class,'test']);

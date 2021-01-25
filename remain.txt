@@ -1,2 +1,1 @@
-2. Image Light Box
 4. Change Order, OrderItem -> status change
