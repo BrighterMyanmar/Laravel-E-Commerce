@@ -1,3 +1,2 @@
-1. Remember Me [ Check Box ]
 2. Image Light Box
-3. Admin Role
+4. Change Order, OrderItem -> status change

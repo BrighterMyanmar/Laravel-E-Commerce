@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -50,5 +51,20 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+    public function roles(){
+        return $this->belongsToMany(Role::class,'role_users');
+    }
+
+    public function hasRole($r){
+        $roles = Auth::user()->roles;
+        $hasRole = false;
+        foreach($roles as $role){
+            if($role->name === $r){
+                $hasRole = true;
+                break;
+            }
+        }
+        return $hasRole;
     }
 }
