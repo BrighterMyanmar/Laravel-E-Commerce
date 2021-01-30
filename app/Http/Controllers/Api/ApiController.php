@@ -24,7 +24,7 @@ class ApiController extends Controller
             return response()->json([
                 'con' => true,
                 'msg' => 'Success',
-                'token' => $jwt_token
+                'data' => $jwt_token
             ]);
         } else {
             return response()->json([
@@ -65,7 +65,7 @@ class ApiController extends Controller
         return response()->json([
             'con' => true,
             'msg' => 'Your Infos',
-            'user' => auth()->user()
+            'data' => auth()->user()
         ]);
     }
     public function cats()
@@ -74,7 +74,7 @@ class ApiController extends Controller
         return response()->json([
             'con' => true,
             'msg' => 'All Categories',
-            'cats' => $cats
+            'data' => $cats
         ]);
     }
     public function subcats($id)
@@ -83,7 +83,16 @@ class ApiController extends Controller
         return response()->json([
             'con' => true,
             'msg' => 'All Sub Categories',
-            'subs' => $subs
+            'data' => $subs
+        ]);
+    }
+    public function productByTag($id)
+    {
+        $subs = Product::where('tag_id', $id)->get();
+        return response()->json([
+            'con' => true,
+            'msg' => 'All Products by Tag id',
+            'data' => $subs
         ]);
     }
     public function tags()
@@ -92,7 +101,7 @@ class ApiController extends Controller
         return response()->json([
             'con' => true,
             'msg' => 'All Sub Categories',
-            'tags' => $tags
+            'data' => $tags
         ]);
     }
     public function products(Request $request)
@@ -101,7 +110,8 @@ class ApiController extends Controller
         return response()->json([
             'con' => true,
             'msg' => 'Paginated Products',
-            'products' => $products
+            'data' => $products,
+            'counts'=>Product::count()
         ]);
     }
     public function getProductByCategory(Request $request, $id)
@@ -110,7 +120,7 @@ class ApiController extends Controller
         return response()->json([
             'con' => true,
             'msg' => 'Paginated Products',
-            'products' => $products
+            'data' => $products
         ]);
     }
     public function getProductBySubcat(Request $request, $id)
@@ -119,7 +129,7 @@ class ApiController extends Controller
         return response()->json([
             'con' => true,
             'msg' => 'Paginated Products',
-            'products' => $products
+            'data' => $products
         ]);
     }
     public function getProductByTag(Request $request, $id)
@@ -128,7 +138,7 @@ class ApiController extends Controller
         return response()->json([
             'con' => true,
             'msg' => 'Paginated Products',
-            'products' => $products
+            'data' => $products
         ]);
     }
     public function setOrder(Request $request)
@@ -186,7 +196,7 @@ class ApiController extends Controller
         return response()->json([
             'con' => true,
             'msg' => 'All Orders',
-            'orders'=> $orders
+            'data'=> $orders
         ]);
     }
     public function myOrderItems(Request $request,$id){
@@ -194,7 +204,15 @@ class ApiController extends Controller
         return response()->json([
             'con' => true,
             'msg' => 'All Orders',
-            'orders'=> $orders
+            'data'=> $orders
+        ]);
+    }
+    public function allsubcats(){
+        $subcats = SubCat::all();
+        return response()->json([
+            'con' => true,
+            'msg' => 'All Orders',
+            'data'=> $subcats
         ]);
     }
 }
